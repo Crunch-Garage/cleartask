@@ -117,3 +117,4 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+cleartask/settings/settings.ini
