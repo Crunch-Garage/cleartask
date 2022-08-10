@@ -25,7 +25,8 @@ REQ_APPS = [
 ]
 
 MY_APPS = [
-    "project"
+    "project",
+    "accounts"
 ]
 
 # My apps
