@@ -15,7 +15,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 # Application definition
 
-INSTALLED_APPS = [
+REQ_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -23,6 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+MY_APPS = [
+    "project"
+]
+
+# My apps
+INSTALLED_APPS = REQ_APPS + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
