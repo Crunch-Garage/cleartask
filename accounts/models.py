@@ -15,3 +15,9 @@ class User(AbstractUser):
     
     def __str__(self):
         return f"{self.username} - {self.email}"
+
+# We will hold additional user information not needed in authentication here
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name="user_profile", on_delete=models.CASCADE,null=True, blank=True)
+    profile_photo = models.ImageField(upload_to="profile_photos", null=True, blank=False, default=None)
+    updated_at = models.DateTimeField(auto_now=True, auto_now_add=False, null=True, blank=True)
