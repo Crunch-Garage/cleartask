@@ -30,6 +30,7 @@ OTHER_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'corsheaders'
 ]
 
 MY_APPS = [
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'cleartask.urls'
@@ -121,6 +123,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.User"
+
+# 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
 
 # DRF config settings
 REST_FRAMEWORK = {
