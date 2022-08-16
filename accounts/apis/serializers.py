@@ -39,3 +39,17 @@ class CustomRegisterSerializer(RegisterSerializer):
             user.last_name = self.data.get('last_name')
         user.save()
         return user
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.UserProfile
+        fields = ["id","user","profile_photo", "updated_at"
+        ]
+
+class UserSerializer(WritableNestedModelSerializer):
+    user_profile = UserProfileSerializer(many=False)
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email',
+        'user_profile'
+        ]
