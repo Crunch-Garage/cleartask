@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import url
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -23,7 +24,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('projects/', include('project.urls')),
     # path('accounts/',include('accounts.urls'))
-    
+    url(r'^accounts/', include('allauth.urls')),
+    path('apis/api-auth/', include('rest_framework.urls')),
+    url(r'^apis/rest-auth/', include('rest_auth.urls')),
+    url(r'^apis/rest-auth/', include('rest_auth.urls')),
+    url(r'^apis/rest-auth/registration/', include('rest_auth.registration.urls')), 
+    url(r'^apis/', include('accounts.apis.urls')),
+    # url(r'^apis/', include('project.apis.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
