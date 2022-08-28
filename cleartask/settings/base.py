@@ -138,6 +138,10 @@ REST_FRAMEWORK = {
     )
 }
 
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'accounts.apis.serializers.CustomTokenSerializer',
+}
+
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.apis.serializers.CustomRegisterSerializer',
 }
