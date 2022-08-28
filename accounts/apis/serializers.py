@@ -2,10 +2,41 @@ from rest_framework import serializers
 from rest_auth.registration.serializers import RegisterSerializer
 from drf_writable_nested.serializers import WritableNestedModelSerializer
 from django.contrib.auth import get_user_model
+from rest_auth.models import TokenModel
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.db import transaction
 from .. import models
 
 User = get_user_model()
+
+# Custom auth token serializer that will allow us to pass custom data after we register a user
+class CustomTokenSerializer(serializers.ModelSerializer):
+    auth_token = serializers.CharField(source='key')
+    access_tokens = serializers.SerializerMethodField()
+    user_id = serializers.SerializerMethodField()
+    user_name = serializers.SerializerMethodField()
+
+    class Meta:
+        model = TokenModel
+        fields = ('auth_token','access_tokens','user_id', 'user_name')
+
+    def get_user_id(self, obj):
+        return str(obj.user.pk)
+
+    def get_user_name(self, obj):
+        return obj.user.username
+
+    def get_access_tokens(self, obj):
+        """
+         We generate JWT auth tokens which we will use in subsequent API requests.
+         This will eliminate the need of firing the token request api to get the auth tokens after sign up.
+        """
+        refresh = RefreshToken.for_user(obj.user)
+
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+        }
 
 class CustomRegisterSerializer(RegisterSerializer):
     email = serializers.EmailField(min_length=None,allow_blank=True, required=False)
