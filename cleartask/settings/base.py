@@ -27,9 +27,12 @@ REQ_APPS = [
 OTHER_APPS = [
     "rest_framework",
     "rest_auth",
+    "rest_framework.authtoken",
+    'rest_auth.registration',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'corsheaders'
 ]
 
 MY_APPS = [
@@ -48,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'cleartask.urls'
@@ -122,6 +126,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.User"
 
+# 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+
 # DRF config settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -129,6 +138,17 @@ REST_FRAMEWORK = {
     )
 }
 
+REST_AUTH_SERIALIZERS = {
+    'TOKEN_SERIALIZER': 'accounts.apis.serializers.CustomTokenSerializer',
+}
+
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.apis.serializers.CustomRegisterSerializer',
 }
+
+# AUTH METHOD
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+
+ACCOUNT_EMAIL_REQUIRED = False
