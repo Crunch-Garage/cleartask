@@ -10,4 +10,4 @@ from decouple import config
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-User.objects.create_superuser(config('SUPERUSER_NAME', cast=str), '', config('SUPERUSER_PASSWORD', cast=str))
+User.objects.create_superuser(config('SUPERUSER_NAME', cast=str), '', config('SUPERUSER_PASSWORD', cast=str), is_staff=True)
