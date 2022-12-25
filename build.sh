@@ -6,5 +6,6 @@ pip install -r requirements/prod.txt
 
 python manage.py collectstatic --no-input
 python manage.py migrate
-export DJANGO_SETTINGS_MODULE=cleartask.settings.prod
-python create_user.py
+# # Use only once
+# export DJANGO_SETTINGS_MODULE=cleartask.settings.prod
+# python create_user.py
