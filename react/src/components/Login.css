@@ -1,0 +1,21 @@
+@import "../global/Imports.css";
+
+.auth-nav {
+    font-family: var(--font-family);
+    padding: 15px;
+
+}
+
+.wrapper{
+    max-width:1080px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+
+.auth-nav img{
+    height:35px;
+    width:auto;
+}

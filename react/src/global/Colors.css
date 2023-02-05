@@ -1,0 +1,11 @@
+:root{
+    --primary-color:#EC058E; /*theme primary*/
+    --secondary-color:#0F0E0E; /* theme secondary*/
+    --primary-text-color:#0f0e0e; /*for texts top in the hierarchy */
+    --secondary-text-color:#747474; /* for text second hierarchy */
+    --primary-button-color:#EC058E; /* primary button color */
+    --secondary-button-color:#0F0E0E; /* on hover or alternative to primary */
+    --primary-background-color:#F2F2F2;
+    --site-nav-drop-hover-color:#f8f7fe;
+    --site-nav-drop-wrapper-background-color:rgb(255 255 255 / 80%);
+}
