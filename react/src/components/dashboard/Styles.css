@@ -1,0 +1,20 @@
+/* Global Css */
+.dashboardContainer{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.dashboardContainer .dashSidebar{
+    height:100vh;
+    padding:2rem 1rem;
+}
+
+.dashboardContainer .dashContentContainer{
+    flex-grow:1;
+    height:100vh;
+    background-color:#f5f5f5;
+}
+
+.dashboardContainer .dashContent{
+    padding:1.5rem;
+}

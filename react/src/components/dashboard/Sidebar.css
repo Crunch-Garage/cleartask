@@ -1,0 +1,43 @@
+.dashMainSideNav ul{
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.dashMainSideNav li{
+    list-style: none;
+    text-align: start;
+    font-size: 1rem;
+}
+
+.dashMainSideNav li .sideLink{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding:0.5rem;
+    color:#5F6388;
+}
+
+.dashMainSideNav li .sideLink:hover{
+    border-radius:0.5rem;
+    color:#E63462;
+}
+
+.dashMainSideNav li .sideLink.active{
+    padding:0.5rem;
+    color:#E63462;
+    /* border-bottom: 1px solid #E63462; */
+}
+
+.dashMainSideNav li .sideLink .sideNavIcon{
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.dashMainSideNav li .sideLink.active .sideNavIcon{
+    background-color: #E63462;
+    color:#ffffff;
+    border-radius: 100%;
+}
