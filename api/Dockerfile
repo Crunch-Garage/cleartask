@@ -38,6 +38,6 @@ RUN set -ex && \
 
 COPY . .
 ENV PATH="/scripts:/py/bin:$PATH"
-USER api
+USER root
 
 CMD [ "run.sh"]
