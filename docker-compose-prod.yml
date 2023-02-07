@@ -1,0 +1,115 @@
+# Production environment docker compose file
+# Version of docker compose to use
+version: '3.9'
+
+# services we want to run
+services:
+  api:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:app
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: public.ecr.aws/e6e1v7l0/cleartask:api
+    # Any name that can further help ID this container
+    container_name: cleartask-django-api
+    build: ./api
+    expose:
+      - 9000
+    links:
+      - postgres:postgres
+      - redis:redis
+    volumes:
+      # persist static files beyond the life of the container
+      - static_volume:/vol/web/static
+      - media_volume:/vol/web/media
+    env_file:
+      # env. file containing variables to use within this service
+      - .env
+    depends_on:
+      - postgres
+
+  nginx:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:nginx
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: public.ecr.aws/e6e1v7l0/cleartask:nginx
+    # Any name that can further help ID this container
+    container_name: cleartask-nginx
+    build:
+      # setting context to base directory so we can access react files in build
+      context: .
+      dockerfile: ./services/nginx/Dockerfile
+    ports:
+      - "80:8000"
+      - 443:443
+    volumes:
+      - static_volume:/vol/static
+      - media_volume:/vol/media
+      - ./services/nginx/production:/etc/nginx/conf.d
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+    links:
+      - api:api
+    depends_on:
+      - api
+
+  postgres:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:postgres
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: public.ecr.aws/e6e1v7l0/cleartask:postgres
+    # Any name that can further help ID this container
+    container_name: cleartask-postgres
+    build: ./services/postgres/
+    ports:
+      - "5432:5432"
+    volumes:
+      # NOTE: Don't manage db in the container. Its easy to wipe data unknowingly.
+      # CONTD: eg. you might need to run docker compose -f docker-compose-prod.yml down -v 
+      # CONTD: an action that will wipe  all services volumes incl. db data.
+      # CONTD: Use RDS or similar
+      
+      # persist db data beyond the life of the container
+      - pgdata:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+
+  redis:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:redis
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: public.ecr.aws/e6e1v7l0/cleartask:redis
+    build: ./services/redis/
+    container_name: cleartask-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+
+volumes:
+  static_volume:
+  media_volume:
+  pgdata:
+  redisdata:
