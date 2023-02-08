@@ -37,12 +37,12 @@ OTHER_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MY_APPS = [
     "project",
-    "accounts"
+    "accounts",
 ]
 
 # My apps
@@ -120,16 +120,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static_files/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media_files/'
 
 # use this settings when debug mode is turned off
 # TO DO: move this settings to prod settings file
 if not DEBUG:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+    MEDIA_ROOT = os.path.join(BASE_DIR, '/vol/web/media')
     # collect ans serve static files from here
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, '/vol/web/static')
     # static files compression support from via whitenoise
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

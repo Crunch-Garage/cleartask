@@ -1,0 +1,97 @@
+# Production environment docker compose file
+# Version of docker compose to use
+version: '3.9'
+
+# services we want to run
+services:
+  api:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:app
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: api:dev
+    # Any name that can further help ID this container
+    container_name: cleartask-django-api-dev
+    build: ./api
+    ports:
+      - "8080:8080"
+    links:
+      - postgres:postgres
+      - redis:redis
+    volumes:
+      # allow container to get chages we make to our app
+      - ./api:/api
+    env_file:
+      - .env
+    command: >
+        sh -c " python manage.py migrate &&
+                python manage.py runserver 0.0.0.0:8080
+              "
+    depends_on:
+      - postgres
+
+  react:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:app
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: react:dev
+    # Any name that can further help ID this container
+    container_name: cleartask-react-dev
+    build: ./react
+    ports:
+      - "3000:3000"
+    volumes:
+      # will allow us to make changes to our react app and have the changes reflect in the container
+      # without having to execute the build command.
+      - ./react:/frontend
+    env_file:
+      # env. file containing variables to use within this service
+      - ./react/.env.development
+    depends_on:
+      # start image after api is has started
+      - postgres
+
+  postgres:
+    restart: unless-stopped
+    image: postgres:dev
+    container_name: cleartask-postgres-dev
+    build: ./services/postgres/
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+
+  redis:
+    # NOTE: opting for 'always' will always restart service even if you try to stop it
+    restart: unless-stopped
+    # NOTE: If hosting images on docker hub, ECR or similar,
+    # CONTD: you can use the repository URI making it easy to push and pull images.
+    # CONTD: (ECR example) image: <myactid>.dkr.ecr.us-east-1.amazonaws.com/<myrepo>:redis
+    # CONTD: then you can run docker compose -f docker-compose-prod.yml push or pull
+
+    # image name and a tag name
+    image: redis-dev:redis
+    build: ./services/redis/
+    container_name: cleartask-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+
+volumes:
+  pgdata:
+  redisdata:
