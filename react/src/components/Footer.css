@@ -24,3 +24,17 @@
     display: flex;
 }
 
+.footer__grid-item button{
+    border:1px solid #d1d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.footer__grid-item button:hover{
+    background-color: var(--site-nav-drop-hover-color);
+    transform:scale(1.2);
+    transition:transform ease 0.2s;
+}
