@@ -77,6 +77,11 @@
     border-bottom: 2px solid transparent;
     display: flex;
     align-items: center;
+    text-transform: uppercase;
+}
+
+.primary-menu__list li > a{
+    text-transform: uppercase;   
 }
 
 .primary-menu__list li button svg{
@@ -108,6 +113,10 @@
     align-items: center;
     font-size: 16px;
     font-weight: 500;
+}
+
+.secondary-menu ul li button{
+    text-transform: uppercase;
 }
 
 .secondary-menu ul.unauthed li:not(:first-child) button{
