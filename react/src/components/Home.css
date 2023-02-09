@@ -30,7 +30,7 @@
 }
 
 .hero__grid--first p{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 15px;
 }
 
@@ -98,6 +98,10 @@
 .rating__stars{
     display: flex;
     flex-wrap: wrap;
+}
+
+.rating__stars span{
+    font-size: 0.9rem;
 }
 
 .hero__grid--first .rating .rating__stars--box{
