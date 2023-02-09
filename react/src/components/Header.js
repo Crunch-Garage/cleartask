@@ -63,73 +63,95 @@ const MainMenu = ()=>{
                                 <div className="dropdown__wrapper--row">
                                     <div className="dropdown__section first">
                                         <div className="dropdown__section-header">
-                                            <span>Tools</span>
+                                            <span>Features</span>
                                         </div>
                                         <div className="dropdown__links">
                                             <NavLink to="/">
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:collaborate"  style={{"font-size": "24px", "color":"#E300A4"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <span className="head">Analytics</span>
-                                                        <p className="body">Get a better understanding of where your traffic is coming from.</p>
+                                                        <span className="head">Teams</span>
+                                                        <p className="body">Bring your team over and collaborate faster on projects.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
                     
                                             <NavLink to="/">                                               
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:checkbox-checked"  style={{"font-size": "24px", "color":"#8EECFC"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <p className="head">Engagement</p>
-                                                        <p className="body">Speak directly to your customers in a more meaningful way.</p>
+                                                        <p className="head">Tasks</p>
+                                                        <p className="body">Create and manage tasks for a project easily.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
                                             <NavLink to="/">
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12c0-1.232.046-2.453.138-3.662a4.006 4.006 0 013.7-3.7 48.678 48.678 0 017.324 0 4.006 4.006 0 013.7 3.7c.017.22.032.441.046.662M4.5 12l-3-3m3 3l3-3m12 3c0 1.232-.046 2.453-.138 3.662a4.006 4.006 0 01-3.7 3.7 48.657 48.657 0 01-7.324 0 4.006 4.006 0 01-3.7-3.7c-.017-.22-.032-.441-.046-.662M19.5 12l-3 3m3-3l3 3" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:document"  style={{"font-size": "24px", "color":"#8FFF93"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <p className="head">Automations</p>
-                                                        <p className="body">Build strategic funnels that will drive your customers to convert</p>
+                                                        <p className="head">Docs</p>
+                                                        <p className="body">Document your projects, keep notes.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
                                             <NavLink to="/">
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:video"  style={{"font-size": "24px", "color":"#FBBC05"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <span className="head">Analytics</span>
-                                                        <p className="body">Get a better understanding of where your traffic is coming from.</p>
+                                                        <span className="head">Meetings</span>
+                                                        <p className="body">Schedule and host virtual conference calls.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
                                             <NavLink to="/">
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:calendar"  style={{"font-size": "24px", "color":"#1EA7FF"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <p className="head">Engagement</p>
-                                                        <p className="body">Speak directly to your customers in a more meaningful way.</p>
+                                                        <p className="head">Calendar</p>
+                                                        <p className="body">Use a robust Calendar to track all your work, tasks and due dates.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
                                             <NavLink to="/">
                                                 <div className="dropdown__link-item">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12c0-1.232.046-2.453.138-3.662a4.006 4.006 0 013.7-3.7 48.678 48.678 0 017.324 0 4.006 4.006 0 013.7 3.7c.017.22.032.441.046.662M4.5 12l-3-3m3 3l3-3m12 3c0 1.232-.046 2.453-.138 3.662a4.006 4.006 0 01-3.7 3.7 48.657 48.657 0 01-7.324 0 4.006 4.006 0 01-3.7-3.7c-.017-.22-.032-.441-.046-.662M19.5 12l-3 3m3-3l3 3" />
-                                                    </svg>
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:notification"  style={{"font-size": "24px", "color":"#2400FF"}}></iconify-icon>
+                                                    </div>
                                                     <div className="dropdown__link-item--text">
-                                                        <p className="head">Automations</p>
-                                                        <p className="body">Build strategic funnels that will drive your customers to convert</p>
+                                                        <p className="head">Notifications</p>
+                                                        <p className="body">Never miss any activity. Get notifications on your account.</p>
+                                                    </div>
+                                                </div>
+                                            </NavLink>
+                                            <NavLink to="/">
+                                                <div className="dropdown__link-item">
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:hashtag"  style={{"font-size": "24px", "color":"#299702"}}></iconify-icon>
+                                                    </div>
+                                                    <div className="dropdown__link-item--text">
+                                                        <p className="head">Chat</p>
+                                                        <p className="body">Use chat to send quick messages to your teammates.</p>
+                                                    </div>
+                                                </div>
+                                            </NavLink>
+                                            <NavLink to="/">
+                                                <div className="dropdown__link-item">
+                                                    <div className="dropdown__link-item--icon">
+                                                        <iconify-icon icon="carbon:directory-domain"  style={{"font-size": "24px", "color":"#FF0000"}}></iconify-icon>
+                                                    </div>
+                                                    <div className="dropdown__link-item--text">
+                                                        <p className="head">Boards</p>
+                                                        <p className="body">Be Agile and stay focused using Kanban boards.</p>
                                                     </div>
                                                 </div>
                                             </NavLink>
