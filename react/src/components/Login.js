@@ -1,8 +1,9 @@
 import React from 'react';
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/solid.png';
+import dashboard from '../assets/dashboard.png';
 import './Login.css';
 
 const axios = require('axios');
@@ -86,6 +87,7 @@ class Login extends React.Component {
     };
     render(){
         return(
+            <div className='auth__block'>
                 <Container className="auth">
                     <Grid container className="auth__grid">
                         <Grid item xs className="auth__grid-item">
@@ -93,21 +95,42 @@ class Login extends React.Component {
                                 <LoginNavbar/> 
                                 <div className='auth__wrapper-inner'>
                                     <div className='auth__wrapper-head'>
-                                        <h2>Welcome back!</h2>
-                                        <p>Login to your account to continue.</p>
+                                        <h2>Login</h2>
+                                        <p>Let’s clear some more tasks</p>
                                     </div>
                                     <form onSubmit={this.loginUser}>
                                         <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                        <input id='identifier' className={this.state.idErrors ? 'form__field-error' : ''} name='identifier' placeholder='Username,Email or Phone number' onChange={(e)=> this.handleChange({identifier:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.idErrors}</span>
-                                        <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' autoComplete='on' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.passwordErrors}</span>
-                                        <button type='submit'>Login</button>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="identifier">Email, username or phone number</label>
+                                            </div>
+                                            <input id='identifier' className={this.state.idErrors ? 'form__field-error' : ''} name='identifier' placeholder='Username,Email or Phone number' onChange={(e)=> this.handleChange({identifier:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.idErrors}</span>
+                                        </div>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="identifier">Password</label>
+                                                <Link to="#">Forgot password</Link>
+                                            </div>
+                                            <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' autoComplete='on' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.passwordErrors}</span>
+                                        </div>
+                                        
+                                        <button type='submit'>Continue</button>
                                         
                                     </form>
+                                    <div className='auth__wrapper-social'>
+                                        <div className='auth__wrapper-social--split'><span></span><p>or</p></div>
+                                        <a href='#'>
+                                            <button type='button'>
+                                                <iconify-icon icon="logos:google-icon"  style={{"font-size": "18px"}}></iconify-icon>
+                                                Continue with Google 
+                                            </button>
+                                        </a>
+                                    </div>
                                     <div className="auth__signup">
                                         <span>Don't have an account?</span>
-                                        <Link to="/auth/signup"><button type="button">Sign up!</button></Link>
+                                        <Link to="/auth/signup"><button type="button">Sign up to continue!</button></Link>
                                     </div>
                                 </div>
                                 <div className="auth__footer">
@@ -118,6 +141,23 @@ class Login extends React.Component {
                         </Grid>
                     </Grid>
                 </Container>
+                <div className='auth__graphic'>
+                    <div className='auth__graphic-wrap'>
+                        <p>
+                        "...The app allows me to create tasks, 
+                        set reminders, and categorize them based on priority, 
+                        which has greatly improved my productivity. 
+                        I also appreciate the ability to collaborate 
+                        with my team and share tasks, making it a great 
+                        tool for team projects. Overall, I highly recommend 
+                        this app to anyone looking for a comprehensive task 
+                        management solution."<br/>
+                        -- Miriam, Product manager
+                        </p>
+                        <img src={dashboard} alt="cleartask dashboard"/>
+                    </div>
+                </div>
+            </div>
         )
     }
 
