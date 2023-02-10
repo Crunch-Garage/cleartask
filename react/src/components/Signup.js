@@ -106,13 +106,6 @@ class Signup extends React.Component {
                                     </div>
                                     <form onSubmit={this.registerUser} className="form">
                                     <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                        <div className='auth__form-input'>
-                                            <div className='auth__form-input--header'>
-                                                <label for="email">Email</label>
-                                            </div>
-                                            <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
-                                            <span className='form__errors'>{this.state.emailErrors}</span>
-                                        </div>
                                         <div className="full-names">
                                             <div className="fields">
                                                 <div className='auth__form-input'>
@@ -124,6 +117,13 @@ class Signup extends React.Component {
                                             
                                             </div>
                                             <span className='form__errors'>{this.state.fullNameErrors}</span>
+                                        </div>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="email">Email</label>
+                                            </div>
+                                            <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.emailErrors}</span>
                                         </div>
                                         <div className='password'>
                                             <div className='auth__form-input'>
