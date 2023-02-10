@@ -110,20 +110,37 @@ class Signup extends React.Component {
                                     </div>
                                     <form onSubmit={this.registerUser} className="form">
                                     <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                        <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.emailErrors}</span>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="email">Email</label>
+                                            </div>
+                                            <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.emailErrors}</span>
+                                        </div>
                                         <div className="full-names">
                                             <div className="fields">
-                                                <input id='firstname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='firstname' placeholder='Firstname' onChange={(e)=> this.handleChange({firstname:e.target.value})} required></input>
-                                                <span style={{width:'10px'}}></span>
-                                                <input id='lastname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='lastname' placeholder='Lastname' onChange={(e)=> this.handleChange({lastname:e.target.value})} required></input>
+                                                <div className='auth__form-input'>
+                                                    <div className='auth__form-input--header'>
+                                                        <label for="firstname">First Name</label>
+                                                    </div>
+                                                    <input id='firstname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='firstname' placeholder='Firstname' onChange={(e)=> this.handleChange({firstname:e.target.value})} required></input>
+                                                    <span style={{width:'10px'}}></span>
+                                                    <input id='lastname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='lastname' placeholder='Lastname' onChange={(e)=> this.handleChange({lastname:e.target.value})} required></input>
+                                                </div>
+                                            
                                             </div>
                                             <span className='form__errors'>{this.state.fullNameErrors}</span>
                                         </div>
                                         <div className='password'>
-                                            <input id='password1' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password1' placeholder='Enter your password' onChange={(e)=> this.handleChange({password1:e.target.value})} required></input>
-                                            <input id='password2' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password2' placeholder='Confirm your password' onChange={(e)=> this.handleChange({password2:e.target.value})} required></input>
-                                            <span className='form__errors'>{this.state.passwordErrors}</span>
+                                            <div className='auth__form-input'>
+                                                <div className='auth__form-input--header'>
+                                                    <label for="password1">Password</label>
+                                                </div>
+                                                <input id='password1' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password1' placeholder='Enter your password' onChange={(e)=> this.handleChange({password1:e.target.value})} required></input>
+                                                <input id='password2' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password2' placeholder='Confirm your password' onChange={(e)=> this.handleChange({password2:e.target.value})} required></input>
+                                                <span className='form__errors'>{this.state.passwordErrors}</span>
+                                            </div>
+                                           
                                         </div>
                                         <button type='submit'>Sign up</button>
                                     </form>
