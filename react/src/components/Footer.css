@@ -24,3 +24,117 @@
     display: flex;
 }
 
+.footer__grid-item button{
+    border:1px solid #d1d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.footer__grid-item button:hover{
+    background-color: var(--site-nav-drop-hover-color);
+    transform:scale(1.2);
+    transition:transform ease 0.2s;
+}
+
+.footer__grid-item a,
+.footer__grid-item span{
+    font-size: 0.9rem;
+}
+
+.footer__container--top{
+    flex-wrap: nowrap;
+    padding-bottom: 20px;
+    justify-content: flex-start !important;
+}
+
+.footer__grid--top.first{
+    padding-top: 20px;
+    margin-right: 45px;
+}
+
+.footer__grid--top.last{
+    padding-top: 20px;
+}
+
+.footer__grid--top.last{
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.footer__grid--top.last a{
+    display: flex;
+    flex: 1 auto 270px;
+    max-inline-size: 300px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px 15px ;
+    border-radius: 5px;
+}
+
+.footer__grid--top.last a:hover{
+    background-color: var(--site-nav-drop-hover-color);
+}
+
+.footer__grid--top .app-badge img{
+    height:50px;
+    width:auto;
+}
+
+.footer__grid--top a img{
+    height:30px;
+    width:auto;
+}
+
+.footer__grid--top a h3{
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.footer__grid--top a p{
+    font-size: 0.7rem;
+}
+
+@media screen and (max-width:1024px){
+    .footer__container--top{
+        flex-direction: column;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+    
+    .footer__grid--top.last a{
+        padding-left: 0;
+        margin-right: 10px;
+    }
+
+    .footer__grid--top.last a:hover{
+        padding: 10px 15px ;
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .footer__container--top{
+        flex-wrap: wrap;
+    }
+
+    .footer__grid--top .footer__grid-item{
+        width: 100%;
+        padding-left: 0 !important;
+        padding-top: 10px !important;
+    }
+
+    .footer__grid--top.last a{
+        flex: unset;
+        max-inline-size: unset;
+        padding-left: 0;
+    }
+
+    .footer__grid--top.last a:hover{
+        padding: 10px 15px ;
+        border-radius: 5px;
+    }
+}
