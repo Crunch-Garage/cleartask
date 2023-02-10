@@ -26,8 +26,7 @@ class Signup extends React.Component {
             username:"",
             fullName:"",
             email:"",
-            password1:"",
-            password2:"",
+            password:"",
             authErrors:"",
             emailErrors:"",
             fullNameErrors:"",
@@ -61,8 +60,7 @@ class Signup extends React.Component {
                         data: {
                             username: this.state.username,
                             firstname:this.state.fullName,
-                            password1:this.state.password1,
-                            password2:this.state.password2,
+                            password:this.state.password,
                             email:this.state.email
                         },
                         config: {
@@ -130,10 +128,9 @@ class Signup extends React.Component {
                                         <div className='password'>
                                             <div className='auth__form-input'>
                                                 <div className='auth__form-input--header'>
-                                                    <label for="password1">Password</label>
+                                                    <label for="password">Password</label>
                                                 </div>
-                                                <input id='password1' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password1' placeholder='Enter your password' onChange={(e)=> this.handleChange({password1:e.target.value})} required></input>
-                                                <input id='password2' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password2' placeholder='Confirm your password' onChange={(e)=> this.handleChange({password2:e.target.value})} required></input>
+                                                <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
                                                 <span className='form__errors'>{this.state.passwordErrors}</span>
                                             </div>
                                            
