@@ -137,9 +137,18 @@ class Signup extends React.Component {
                                         </div>
                                         <button type='submit'>Sign up</button>
                                     </form>
+                                    <div className='auth__wrapper-social'>
+                                        <div className='auth__wrapper-social--split'><span></span><p>or</p></div>
+                                        <a href='#'>
+                                            <button type='button'>
+                                                <iconify-icon icon="logos:google-icon"  style={{"font-size": "18px"}}></iconify-icon>
+                                                Continue with Google 
+                                            </button>
+                                        </a>
+                                    </div>
                                     <div className="auth__signup">
                                         <span>Already have an account?</span>
-                                        <Link to="/auth/login"><button type="button">Login!</button></Link>
+                                        <Link to="/auth/login"><button type="button">Login to continue!</button></Link>
                                     </div>
                                 </div>
                                 <div className="auth__footer">
