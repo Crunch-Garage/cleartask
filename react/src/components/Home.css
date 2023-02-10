@@ -32,6 +32,7 @@
 .hero__grid--first p{
     font-size: 1rem;
     margin-bottom: 15px;
+    text-align: start;
 }
 
 .hero__grid--first form{
