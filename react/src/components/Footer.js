@@ -6,11 +6,13 @@ import {Container, Grid} from '@mui/material';
 const Footer = ()=>{
     return(
         <footer className="footer">
-            <Container className="footer__container">
-                    <Grid container xs="auto" spacing={5} className="footer__grid footer__grid--top">
+            <Container className="footer__container footer__container--top">
+                    <Grid container xs='auto' className="footer__grid footer__grid--top first">
                         <Grid item xs="auto" className="footer__grid-item">
                             <a href="/"><img src={logo} alt="Cleartask logo"/></a>
                         </Grid>
+                    </Grid>
+                    <Grid container xs="auto" className="footer__grid footer__grid--top last">
                         <Grid item xs="auto" className="footer__grid-item">
                             <a href="#">
                                 <h3>About Cleartask</h3>
