@@ -1,10 +1,20 @@
 .auth{
-    padding:0px 15px;
+    padding:50px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     height:100vh;
     width: 100vw;
+    overflow-y: auto;
+}
+
+.auth::-webkit-scrollbar{
+    width: 3px;
+}
+
+.auth::-webkit-scrollbar-thumb{
+    background-color: #d1d1d1;
+    border-radius: 100px;
 }
 
 .auth__grid{
@@ -203,4 +213,51 @@
     object-fit: cover;
     height: auto;
     width: 1000px;
+}
+
+.auth__wrapper-social{
+    margin-top: 25px;
+}
+
+.auth__wrapper-social--split{
+    position: relative;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth__wrapper-social--split span{
+    display: flex;
+    width:100%;
+    height:1px;
+    background-color: #d1d1d1;
+}
+
+.auth__wrapper-social--split p{
+    background: #ffffff;
+    padding: 0 5px;
+    width: fit-content;
+    position: relative;
+    top:-12px;
+}
+
+.auth__wrapper-social button{
+    border:1px solid #ddd;
+    width:100%;
+    padding:10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.auth__wrapper-social button iconify-icon{
+    margin-right: 10px;
+}
+
+.auth__wrapper-social button:hover{
+  background-color: var(--site-nav-drop-hover-color);
 }
