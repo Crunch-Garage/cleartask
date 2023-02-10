@@ -3,6 +3,7 @@ import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
 import logo from '../assets/solid.png';
+import dashboard from '../assets/dashboard.png';
 import './Login.css';
 
 const axios = require('axios');
@@ -86,6 +87,7 @@ class Login extends React.Component {
     };
     render(){
         return(
+            <div className='auth__block'>
                 <Container className="auth">
                     <Grid container className="auth__grid">
                         <Grid item xs className="auth__grid-item">
@@ -118,6 +120,23 @@ class Login extends React.Component {
                         </Grid>
                     </Grid>
                 </Container>
+                <div className='auth__graphic'>
+                    <div className='auth__graphic-wrap'>
+                        <p>
+                        "...The app allows me to create tasks, 
+                        set reminders, and categorize them based on priority, 
+                        which has greatly improved my productivity. 
+                        I also appreciate the ability to collaborate 
+                        with my team and share tasks, making it a great 
+                        tool for team projects. Overall, I highly recommend 
+                        this app to anyone looking for a comprehensive task 
+                        management solution."<br/>
+                        -- Miriam, Product manager
+                        </p>
+                        <img src={dashboard} alt="cleartask dashboard"/>
+                    </div>
+                </div>
+            </div>
         )
     }
 

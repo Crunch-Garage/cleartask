@@ -3,6 +3,7 @@ import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
 import logo from '../assets/solid.png';
+import dashboard from '../assets/dashboard.png';
 
 const axios = require('axios');
 const baseURL = process.env.REACT_APP_BASEAPIURL || 'http://127.0.0.1:8000';
@@ -95,48 +96,66 @@ class Signup extends React.Component {
 
     render(){
         return(
-            <Container className="auth">
-                <Grid container className="auth__grid">
-                    <Grid item xs className="auth__grid-item">
-                        <div className='auth__wrapper'>
-                            <SignUpNavbar/>
-                            <div className='auth__wrapper-inner'>
-                            
-                                <div className='auth__wrapper-head'>
-                                    <h2>Ready to get more done</h2>
-                                    <p>Create an account to begin</p>
-                                </div>
-                                <form onSubmit={this.registerUser} className="form">
-                                <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                    <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
-                                    <span className='form__errors'>{this.state.emailErrors}</span>
-                                    <div className="full-names">
-                                        <div className="fields">
-                                            <input id='firstname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='firstname' placeholder='Firstname' onChange={(e)=> this.handleChange({firstname:e.target.value})} required></input>
-                                            <span style={{width:'10px'}}></span>
-                                            <input id='lastname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='lastname' placeholder='Lastname' onChange={(e)=> this.handleChange({lastname:e.target.value})} required></input>
+            <div className='auth__block'>
+                <Container className="auth">
+                    <Grid container className="auth__grid">
+                        <Grid item xs className="auth__grid-item">
+                            <div className='auth__wrapper'>
+                                <SignUpNavbar/>
+                                <div className='auth__wrapper-inner'>
+                                
+                                    <div className='auth__wrapper-head'>
+                                        <h2>Ready to get more done</h2>
+                                        <p>Create an account to begin</p>
+                                    </div>
+                                    <form onSubmit={this.registerUser} className="form">
+                                    <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
+                                        <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
+                                        <span className='form__errors'>{this.state.emailErrors}</span>
+                                        <div className="full-names">
+                                            <div className="fields">
+                                                <input id='firstname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='firstname' placeholder='Firstname' onChange={(e)=> this.handleChange({firstname:e.target.value})} required></input>
+                                                <span style={{width:'10px'}}></span>
+                                                <input id='lastname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='lastname' placeholder='Lastname' onChange={(e)=> this.handleChange({lastname:e.target.value})} required></input>
+                                            </div>
+                                            <span className='form__errors'>{this.state.fullNameErrors}</span>
                                         </div>
-                                        <span className='form__errors'>{this.state.fullNameErrors}</span>
+                                        <div className='password'>
+                                            <input id='password1' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password1' placeholder='Enter your password' onChange={(e)=> this.handleChange({password1:e.target.value})} required></input>
+                                            <input id='password2' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password2' placeholder='Confirm your password' onChange={(e)=> this.handleChange({password2:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.passwordErrors}</span>
+                                        </div>
+                                        <button type='submit'>Sign up</button>
+                                    </form>
+                                    <div className="auth__signup">
+                                        <span>Already have an account?</span>
+                                        <Link to="/auth/login"><button type="button">Login!</button></Link>
                                     </div>
-                                    <div className='password'>
-                                        <input id='password1' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password1' placeholder='Enter your password' onChange={(e)=> this.handleChange({password1:e.target.value})} required></input>
-                                        <input id='password2' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password2' placeholder='Confirm your password' onChange={(e)=> this.handleChange({password2:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.passwordErrors}</span>
-                                    </div>
-                                    <button type='submit'>Sign up</button>
-                                </form>
-                                <div className="auth__signup">
-                                    <span>Already have an account?</span>
-                                    <Link to="/auth/login"><button type="button">Login!</button></Link>
+                                </div>
+                                <div className="auth__footer">
+                                    <span> &copy;Cleartask {new Date().getFullYear()}</span>
                                 </div>
                             </div>
-                            <div className="auth__footer">
-                                <span> &copy;Cleartask {new Date().getFullYear()}</span>
-                            </div>
-                        </div>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
+                </Container>
+                <div className='auth__graphic'>
+                    <div className='auth__graphic-wrap'>
+                        <p>
+                        "...The app allows me to create tasks, 
+                        set reminders, and categorize them based on priority, 
+                        which has greatly improved my productivity. 
+                        I also appreciate the ability to collaborate 
+                        with my team and share tasks, making it a great 
+                        tool for team projects. Overall, I highly recommend 
+                        this app to anyone looking for a comprehensive task 
+                        management solution."<br/>
+                        -- Miriam, Product manager
+                        </p>
+                        <img src={dashboard} alt="cleartask dashboard"/>
+                    </div>
+                </div>
+            </div>
         )
     }
 
