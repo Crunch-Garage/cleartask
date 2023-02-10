@@ -1,7 +1,7 @@
 import React from 'react';
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/solid.png';
 import dashboard from '../assets/dashboard.png';
 import './Login.css';
@@ -100,11 +100,23 @@ class Login extends React.Component {
                                     </div>
                                     <form onSubmit={this.loginUser}>
                                         <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                        <input id='identifier' className={this.state.idErrors ? 'form__field-error' : ''} name='identifier' placeholder='Username,Email or Phone number' onChange={(e)=> this.handleChange({identifier:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.idErrors}</span>
-                                        <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' autoComplete='on' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
-                                        <span className='form__errors'>{this.state.passwordErrors}</span>
-                                        <button type='submit'>Login</button>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="identifier">Email, username or phone number</label>
+                                            </div>
+                                            <input id='identifier' className={this.state.idErrors ? 'form__field-error' : ''} name='identifier' placeholder='Username,Email or Phone number' onChange={(e)=> this.handleChange({identifier:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.idErrors}</span>
+                                        </div>
+                                        <div className='auth__form-input'>
+                                            <div className='auth__form-input--header'>
+                                                <label for="identifier">Password</label>
+                                                <Link to="#">Forgot password</Link>
+                                            </div>
+                                            <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' autoComplete='on' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
+                                            <span className='form__errors'>{this.state.passwordErrors}</span>
+                                        </div>
+                                        
+                                        <button type='submit'>Continue</button>
                                         
                                     </form>
                                     <div className="auth__signup">
