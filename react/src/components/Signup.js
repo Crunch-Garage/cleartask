@@ -24,8 +24,7 @@ class Signup extends React.Component {
         super(props);
         this.state = {
             username:"",
-            firstname:"",
-            lastname:"",
+            fullName:"",
             email:"",
             password1:"",
             password2:"",
@@ -53,16 +52,15 @@ class Signup extends React.Component {
     registerUser = (e) => {
         e.preventDefault();
         console.log(baseURL)
-        this.state.email && this.state.firstname && this.state.lastname ? (
+        this.state.email && this.state.firstname? (
             this.state.email ? (
-                this.state.firstname && this.state.lastname ? (
+                this.state.fullName ? (
                     axios({
                         method:'post',
                         url:`${baseURL}/apis/rest-auth/registration/`,
                         data: {
                             username: this.state.username,
-                            firstname:this.state.firstname,
-                            lastname:this.state.lastname,
+                            firstname:this.state.fullName,
                             password1:this.state.password1,
                             password2:this.state.password2,
                             email:this.state.email
@@ -88,10 +86,10 @@ class Signup extends React.Component {
                         console.log(error);
                     })
 
-                ) : this.setState({fullNameErrors:"Please enter your first and last name"})
+                ) : this.setState({fullNameErrors:"Please enter your full name"})
 
             ) : this.setState({emailErrors:"Please enter your email"})
-        ) : this.setState({emailErrors:"Please enter your email",fullNameErrors:"Please enter your first and last name"})
+        ) : this.setState({emailErrors:"Please enter your email",fullNameErrors:"Please enter your full name"})
     };
 
     render(){
@@ -121,11 +119,9 @@ class Signup extends React.Component {
                                             <div className="fields">
                                                 <div className='auth__form-input'>
                                                     <div className='auth__form-input--header'>
-                                                        <label for="firstname">First Name</label>
+                                                        <label for="fullname">Full Name</label>
                                                     </div>
-                                                    <input id='firstname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='firstname' placeholder='Firstname' onChange={(e)=> this.handleChange({firstname:e.target.value})} required></input>
-                                                    <span style={{width:'10px'}}></span>
-                                                    <input id='lastname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='lastname' placeholder='Lastname' onChange={(e)=> this.handleChange({lastname:e.target.value})} required></input>
+                                                    <input id='fullname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='full name' placeholder='Jane Doe' onChange={(e)=> this.handleChange({fullName:e.target.value})} required></input>
                                                 </div>
                                             
                                             </div>
