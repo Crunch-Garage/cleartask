@@ -105,8 +105,8 @@ class Signup extends React.Component {
                                 <div className='auth__wrapper-inner'>
                                 
                                     <div className='auth__wrapper-head'>
-                                        <h2>Ready to get more done</h2>
-                                        <p>Create an account to begin</p>
+                                        <h2>Signup</h2>
+                                        <p>Start your journey on Cleartask</p>
                                     </div>
                                     <form onSubmit={this.registerUser} className="form">
                                     <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
