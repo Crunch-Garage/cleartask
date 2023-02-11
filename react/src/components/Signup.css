@@ -221,26 +221,24 @@
 
 .auth__wrapper-social--split{
     position: relative;
-    height: 50px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.auth__wrapper-social--split span{
-    display: flex;
-    width:100%;
+.auth__wrapper-social--split .left__tick,
+.auth__wrapper-social--split .right__tick{
+    flex: 1 1 0%;
     height:1px;
     background-color: #d1d1d1;
+    margin: 0 15px;
+    border-radius: 5px;
 }
 
 .auth__wrapper-social--split p{
     background: #ffffff;
-    padding: 0 5px;
     width: fit-content;
-    position: relative;
-    top:-12px;
+    text-align: center;
 }
 
 .auth__wrapper-social button{

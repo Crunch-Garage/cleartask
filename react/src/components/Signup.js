@@ -138,7 +138,11 @@ class Signup extends React.Component {
                                         <button type='submit'>Sign up</button>
                                     </form>
                                     <div className='auth__wrapper-social'>
-                                        <div className='auth__wrapper-social--split'><span></span><p>or</p></div>
+                                        <div className='auth__wrapper-social--split'>
+                                            <div className='left__tick'></div>
+                                            <p>or</p>
+                                            <div className='right__tick'></div>
+                                        </div>
                                         <a href='#'>
                                             <button type='button'>
                                                 <iconify-icon icon="logos:google-icon"  style={{"font-size": "18px"}}></iconify-icon>
