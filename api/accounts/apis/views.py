@@ -99,7 +99,30 @@ def get_started_with_email(request):
         }
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-# activate account and mark email as verified
-@api_view(['GET'])
-def activate_account(request, uuid, token):
-    pass
+# Api that allows users to claim their created account.
+@api_view(['POST'])
+def activate_account(request, uid, token):
+    try:
+        # Get ui from the api url
+        uid = force_text(urlsafe_base64_decode(uid))
+        # The retrieve the inactive user
+        user = User.objects.get(pk=uid)
+    except Exception as e:
+        print(e)
+        user = None
+        
+    if user is not None and tokens.account_activation_token.check_token(user, token):
+        # Mark user as active so the can be able to login
+        user.is_active = True
+        user.save()
+        
+        # TO DO: mark email address as verified
+        content = {
+            "details": "Email verified successfully. You can now login to your account"
+        }
+        return Response(content)
+    else:
+        content = {
+            "details": "Invalid activation link."
+        }
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
