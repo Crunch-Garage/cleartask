@@ -32,10 +32,17 @@ def get_started_with_email(request):
     if email:
         email_is_valid = utility.email_is_valid(email)
         if email_is_valid:
-            content = {
-                "details": "Request successful!"
-            }
-            return Response(content, )
+            send_verification_email = utility.send_email(email)
+            if send_verification_email:
+                content = {
+                    "details": f"Request successful! Check you email - {email}, for instructions to verify your email."
+                }
+                return Response(content)
+            else:
+                content = {
+                    "details": "Something went wrong try again later!"
+                }
+                return Response(content, status=status.HTTP_400_BAD_REQUEST)
         else:
             content = {
             "email": f"Your email - {email}, is invalid. Check for typos and try again."
