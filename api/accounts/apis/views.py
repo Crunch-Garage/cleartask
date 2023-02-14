@@ -16,6 +16,7 @@ from rest_framework.permissions import  (
                     IsAuthenticatedOrReadOnly
                     )
 from django.contrib.auth import get_user_model
+from .. import utility
 
 User = get_user_model()
 
@@ -29,10 +30,17 @@ class UserListApiView(ListAPIView):
 def get_started_with_email(request):
     email= request.POST.get("email", '')
     if email:
-        content = {
-            "details": "Request successful!"
-        }
-        return Response(content, )
+        email_is_valid = utility.email_is_valid(email)
+        if email_is_valid:
+            content = {
+                "details": "Request successful!"
+            }
+            return Response(content, )
+        else:
+            content = {
+            "email": f"Your email - {email}, is invalid. Check for typos and try again."
+            }
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
     else:
         content = {
             "email": "This field is required"
