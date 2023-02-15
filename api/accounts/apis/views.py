@@ -53,7 +53,10 @@ def create_user_no_password(email):
 # Send email with verification link
 @api_view(['POST'])         
 def get_started_with_email(request):
-    email= request.POST.get("email", '')
+    try:
+        email= request.data["email"]
+    except Exception as e:
+        email = ''
     if email:
         email_is_valid = utility.email_is_valid(email)
         if email_is_valid:
