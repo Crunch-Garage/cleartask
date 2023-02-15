@@ -73,14 +73,54 @@
 .hero__grid--first form button{
     background-color: var(--primary-color);
     padding:12px 35px;
+    min-width: 160px;
     border-radius: 3px;
     color:#ffffff;
     margin-right:15px;
+    position: relative;
 }
 
 .hero__grid--first form button:hover{
     background-color: var(--secondary-button-color);
 }
+
+/* TO DO: Move this to own component */
+.cta__button--spinners{
+    display: block;
+
+}
+
+@keyframes bouncing-loader {
+    0%, 100%, 80% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.cta__button--spinners .cta__button--spinner1{
+    -webkit-animation-delay: -.32s;
+    animation-delay: -.32s;
+}
+
+.cta__button--spinners .cta__button--spinner2{
+    -webkit-animation-delay: -.16s;
+    animation-delay: -.16s;
+}
+
+.cta__button--spinners > div{
+    display: inline-block;
+    width:12px;
+    height:12px;
+    border-radius: 100%;
+    background-color: #fff;
+    animation: bouncing-loader 1.4s infinite ease-in-out both
+}
+
+/*  */
 
 .hero__grid--first form input::placeholder{
     font-size:1rem;

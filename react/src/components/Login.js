@@ -1,13 +1,11 @@
 import React from 'react';
+import axios from "../services/axios";
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/solid.png';
 import dashboard from '../assets/dashboard.png';
 import './Login.css';
-
-const axios = require('axios');
-const baseURL = process.env.REACT_APP_BASEAPIURL || 'http://127.0.0.1:8080';
 
 
 const LoginNavbar = ()=>{
@@ -47,14 +45,11 @@ class Login extends React.Component {
             this.state.password ? (
                 axios({
                     method:'post',
-                    url:`${baseURL}/apis/api/token/`,
+                    url:'/apis/api/token/',
                     data: {
                         username: this.state.identifier,
                         password:this.state.password,
-                    },
-                    config: {
-                        headers: { "Content-Type": "application/json" }
-                        }
+                    }
                 })
                 .then(response => {
                     // clear auth errors

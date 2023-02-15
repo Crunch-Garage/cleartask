@@ -1,12 +1,10 @@
 import React from 'react';
+import axios from "../services/axios";
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
 import logo from '../assets/solid.png';
 import dashboard from '../assets/dashboard.png';
-
-const axios = require('axios');
-const baseURL = process.env.REACT_APP_BASEAPIURL || 'http://127.0.0.1:8000';
 
 const SignUpNavbar = ()=>{
     return(
@@ -50,22 +48,18 @@ class Signup extends React.Component {
 
     registerUser = (e) => {
         e.preventDefault();
-        console.log(baseURL)
         this.state.email && this.state.firstname? (
             this.state.email ? (
                 this.state.fullName ? (
                     axios({
                         method:'post',
-                        url:`${baseURL}/apis/rest-auth/registration/`,
+                        url:'/apis/rest-auth/registration/',
                         data: {
                             username: this.state.username,
                             firstname:this.state.fullName,
                             password:this.state.password,
                             email:this.state.email
-                        },
-                        config: {
-                            headers: { "Content-Type": "application/json" }
-                          }
+                        }
                     })
                     .then(response => {
 

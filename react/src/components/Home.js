@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "../services/axios";
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
 import getApp from '../assets/getApp.png';
@@ -11,18 +12,57 @@ import github from '../assets/github.png';
 import snapchat from '../assets/snapchat.png';
 import "./Home.css";
 
-
 const GetStartedInput = ()=>{
+    const [submitting, setSubmitting] = React.useState(false)
+
     
+    const submitEmail = (email) => {
+        setSubmitting(true);
+        axios({
+            method:'post',
+            url:'apis/create_account/claim_email/',
+            data: {
+                email: email,
+            }
+        })
+        .then(response => {
+            setSubmitting(false);
+            
+        })
+        .catch(error =>{
+            setSubmitting(false);  
+        })
+    }
+
     const handleSubmit = (e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        submitEmail(e.target.email.value);
+        
     }
 
     return(
         <form onSubmit={handleSubmit} method="post">
-            <input type="email" placeholder="Enter your email"/>
+            <input id="email" type="email" placeholder="Enter your email"/>
             <div className="cta">
-                <button type="submit">Get started</button>
+                <button type="submit" className="cta__button">
+                {
+                    !submitting ?(
+                    <div className="cta__button--text">
+                        Get started
+                    </div>
+                    ): (
+                    <div className="cta__button--spinners">
+                        <div className="cta__button--spinner1">
+                        </div>
+                        <div className="cta__button--spinner2">
+                        </div>
+                        <div className="cta__button--spinner2">
+                        </div>
+                    </div>
+                    )
+                }
+                    
+                </button>
                 <span>Free forever!<br/> No credit card</span>
             </div>
         </form>
