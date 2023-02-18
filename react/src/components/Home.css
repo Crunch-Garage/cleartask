@@ -84,44 +84,6 @@
     background-color: var(--secondary-button-color);
 }
 
-/* TO DO: Move this to own component */
-.cta__button--spinners{
-    display: block;
-
-}
-
-@keyframes bouncing-loader {
-    0%, 100%, 80% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-    40% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-}
-
-.cta__button--spinners .cta__button--spinner1{
-    -webkit-animation-delay: -.32s;
-    animation-delay: -.32s;
-}
-
-.cta__button--spinners .cta__button--spinner2{
-    -webkit-animation-delay: -.16s;
-    animation-delay: -.16s;
-}
-
-.cta__button--spinners > div{
-    display: inline-block;
-    width:12px;
-    height:12px;
-    border-radius: 100%;
-    background-color: #fff;
-    animation: bouncing-loader 1.4s infinite ease-in-out both
-}
-
-/*  */
-
 .hero__grid--first form input::placeholder{
     font-size:1rem;
 }
@@ -231,7 +193,7 @@
 }
 
 .partners__container h2{
-    font-size: var(----secondary-header-font-size);
+    font-size: var(--secondary-header-font-size);
     font-weight:500;
     text-transform: uppercase;
     color:#c4c4c4;
@@ -252,4 +214,34 @@
 .partners__company img{
      height:30px;
      width: auto;
+}
+
+.emailModal{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height:100vh;
+    background-color:#ffffff;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailModal > button{
+    position: absolute;
+    top:25px;
+    right:25px;
+    padding: 5px;
+    background-color:rgb(0 0 0 / 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.emailModal > button iconify-icon{
+    color: #fff;;
+    font-size: 25px;
 }

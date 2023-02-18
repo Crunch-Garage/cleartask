@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "../services/axios";
+import Images from '../global/Images.js';
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link, NavLink } from "react-router-dom";
@@ -13,7 +14,7 @@ const LoginNavbar = ()=>{
         <nav className='auth-nav'>
             <div className='wrapper'>
                 <Link to="/">
-                    <img src={logo} alt=""/>
+                    <img src={Images.logo} alt=""/>
                 </Link>
             </div>
         </nav>
@@ -153,7 +154,7 @@ class Login extends React.Component {
                         management solution."<br/>
                         -- Miriam, Product manager
                         </p>
-                        <img src={dashboard} alt="cleartask dashboard"/>
+                        <img src={Images.dashboard} alt="cleartask dashboard"/>
                     </div>
                 </div>
             </div>

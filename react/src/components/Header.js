@@ -1,8 +1,8 @@
 import React from "react";
+import Images from '../global/Images.js';
 import './Header.css';
 import { NavLink, Link } from "react-router-dom";
 import {Container, Grid} from '@mui/material';
-import logo from '../assets/solid.png';
 import TokenService from "../services/token";
 
 var isExpired = TokenService.tokenIsExpired();
@@ -45,7 +45,7 @@ const MainMenu = ()=>{
         <div className="primary-menu">
             <div className="primary-menu__logo">
                 <Link to="/">
-                    <img src={logo} alt="cleartask"/>
+                    <img src={Images.logo} alt="cleartask"/>
                 </Link>
             </div>
             <div className="primary-menu__list-wrapper">

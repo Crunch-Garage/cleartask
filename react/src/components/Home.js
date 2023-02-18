@@ -1,21 +1,31 @@
 import React from "react";
 import axios from "../services/axios";
+import Images from '../global/Images.js';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
-import getApp from '../assets/getApp.png';
-import trusPilot from '../assets/truspilot.png';
-import capterra from '../assets/capterra.png';
-import hr from '../assets/hr.png';
-import airbnb from '../assets/airbnb.png';
-import instagram from '../assets/instagram.png';
-import github from '../assets/github.png';
-import snapchat from '../assets/snapchat.png';
+import BouncingDots from "./progress_bars/BouncingDots";
 import "./Home.css";
+import Signup from "./Signup";
+
+const GetStartedPopup = ({setShowSignup})=>{
+    const closeModal =()=>{
+        setShowSignup(false)
+    }
+
+    return(
+        <div className="emailModal">
+            <Signup/>
+            <button type="button" onClick={closeModal}>
+                <iconify-icon icon="carbon:close"></iconify-icon>
+            </button>
+        </div>
+    )
+}
 
 const GetStartedInput = ()=>{
-    const [submitting, setSubmitting] = React.useState(false)
+    const [submitting, setSubmitting] = React.useState(false);
+    const [showSignup, setShowSignup] = React.useState(false);
 
-    
     const submitEmail = (email) => {
         setSubmitting(true);
         axios({
@@ -36,36 +46,37 @@ const GetStartedInput = ()=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        submitEmail(e.target.email.value);
-        
+        if (e.target.email.value !=''){
+            // TO DO: Do some email validation
+            submitEmail(e.target.email.value);
+        } else{
+            setShowSignup(true);
+        }
+           
     }
 
     return(
-        <form onSubmit={handleSubmit} method="post">
-            <input id="email" type="email" placeholder="Enter your email"/>
-            <div className="cta">
-                <button type="submit" className="cta__button">
-                {
-                    !submitting ?(
-                    <div className="cta__button--text">
-                        Get started
-                    </div>
-                    ): (
-                    <div className="cta__button--spinners">
-                        <div className="cta__button--spinner1">
+        <>
+            { showSignup ? <GetStartedPopup setShowSignup={setShowSignup}/> :'' }
+            <form onSubmit={handleSubmit} method="post">
+                <input id="email" type="email" placeholder="Enter your email"/>
+                <div className="cta">
+                    <button type="submit" className="cta__button">
+                    {
+                        !submitting ?(
+                        <div className="cta__button--text">
+                            Get started
                         </div>
-                        <div className="cta__button--spinner2">
-                        </div>
-                        <div className="cta__button--spinner2">
-                        </div>
-                    </div>
-                    )
-                }
-                    
-                </button>
-                <span>Free forever!<br/> No credit card</span>
-            </div>
-        </form>
+                        ): (
+                        <BouncingDots/>
+                        )
+                    }
+                        
+                    </button>
+                    <span>Free forever!<br/> No credit card</span>
+                </div>
+            </form>
+        </>
     )
 }
 
@@ -93,9 +104,9 @@ const ReviewOverview =()=>{
                 <span>Based on 5000+ reviews on</span>
             </div>
             <div className="rating__review-apps">
-                <img src={getApp}/>
-                <img src={trusPilot}/>
-                <img src={capterra}/>
+                <img src={Images.getApp}/>
+                <img src={Images.trusPilot}/>
+                <img src={Images.capterra}/>
             </div>
         </div>
     )
@@ -124,7 +135,7 @@ class Home extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={7} lg={7} className=" mui__grid-item hero__grid--item hero__grid--last">
                                     <div className="hero__grid-graphic">
-                                        <img src={hr} alt="dashboard"/>
+                                        <img src={Images.hr} alt="dashboard"/>
                                     </div>
                                 </Grid>
                             </Grid>
@@ -136,16 +147,16 @@ class Home extends React.Component {
                         <h2>Trusted by global companies</h2>
                         <Grid container className="partners__companies">
                             <Grid item xs="auto" className="partners__company">
-                                <img src={airbnb} alt="airbnb"/>
+                                <img src={Images.airbnb} alt="airbnb"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={github} alt="github"/>
+                                <img src={Images.github} alt="github"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={instagram} alt="instagram"/>
+                                <img src={Images.instagram} alt="instagram"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={snapchat} alt="snapchat"/>
+                                <img src={Images.snapchat} alt="snapchat"/>
                             </Grid>
                         </Grid>
                     </Container>

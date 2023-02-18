@@ -1,17 +1,16 @@
 import React from 'react';
 import axios from "../services/axios";
+import Images from '../global/Images.js';
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
-import logo from '../assets/solid.png';
-import dashboard from '../assets/dashboard.png';
 
 const SignUpNavbar = ()=>{
     return(
         <nav className='auth-nav'>
             <div className='wrapper'>
                 <Link to="/">
-                    <img src={logo} alt=""/>
+                    <img src={Images.logo} alt=""/>
                 </Link>
             </div>
         </nav>
@@ -169,7 +168,7 @@ class Signup extends React.Component {
                         management solution."<br/>
                         -- Miriam, Product manager
                         </p>
-                        <img src={dashboard} alt="cleartask dashboard"/>
+                        <img src={Images.dashboard} alt="cleartask dashboard"/>
                     </div>
                 </div>
             </div>
