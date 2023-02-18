@@ -1,5 +1,5 @@
 import "./Footer.css";
-import logo from '../assets/solid.png';
+import Images from '../global/Images.js';
 import googlePlay from '../assets/google-play-badge.png';
 import {Container, Grid} from '@mui/material';
 
@@ -9,7 +9,7 @@ const Footer = ()=>{
             <Container className="footer__container footer__container--top">
                     <Grid container xs='auto' className="footer__grid footer__grid--top first">
                         <Grid item xs="auto" className="footer__grid-item">
-                            <a href="/"><img src={logo} alt="Cleartask logo"/></a>
+                            <a href="/"><img src={Images.logo} alt="Cleartask logo"/></a>
                         </Grid>
                     </Grid>
                     <Grid container xs="auto" className="footer__grid footer__grid--top last">

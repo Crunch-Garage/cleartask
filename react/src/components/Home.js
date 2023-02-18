@@ -4,14 +4,6 @@ import Images from '../global/Images.js';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
 import BouncingDots from "./progress_bars/BouncingDots";
-import getApp from '../assets/getApp.png';
-import trusPilot from '../assets/truspilot.png';
-import capterra from '../assets/capterra.png';
-import hr from '../assets/hr.png';
-import airbnb from '../assets/airbnb.png';
-import instagram from '../assets/instagram.png';
-import github from '../assets/github.png';
-import snapchat from '../assets/snapchat.png';
 import "./Home.css";
 import Signup from "./Signup";
 
@@ -112,9 +104,9 @@ const ReviewOverview =()=>{
                 <span>Based on 5000+ reviews on</span>
             </div>
             <div className="rating__review-apps">
-                <img src={getApp}/>
-                <img src={trusPilot}/>
-                <img src={capterra}/>
+                <img src={Images.getApp}/>
+                <img src={Images.trusPilot}/>
+                <img src={Images.capterra}/>
             </div>
         </div>
     )
@@ -143,7 +135,7 @@ class Home extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={7} lg={7} className=" mui__grid-item hero__grid--item hero__grid--last">
                                     <div className="hero__grid-graphic">
-                                        <img src={hr} alt="dashboard"/>
+                                        <img src={Images.hr} alt="dashboard"/>
                                     </div>
                                 </Grid>
                             </Grid>
@@ -155,16 +147,16 @@ class Home extends React.Component {
                         <h2>Trusted by global companies</h2>
                         <Grid container className="partners__companies">
                             <Grid item xs="auto" className="partners__company">
-                                <img src={airbnb} alt="airbnb"/>
+                                <img src={Images.airbnb} alt="airbnb"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={github} alt="github"/>
+                                <img src={Images.github} alt="github"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={instagram} alt="instagram"/>
+                                <img src={Images.instagram} alt="instagram"/>
                             </Grid>
                             <Grid item xs="auto" className="partners__company">
-                                <img src={snapchat} alt="snapchat"/>
+                                <img src={Images.snapchat} alt="snapchat"/>
                             </Grid>
                         </Grid>
                     </Container>
