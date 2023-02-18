@@ -1,5 +1,5 @@
 import React from "react";
-import Images from '../global/Images.js';
+import Images from '../../global/Images.js';
 import { NavLink } from "react-router-dom";
 import './Topnav.css';
 import {Container, Grid, Avatar, Stack} from '@mui/material';
