@@ -1,0 +1,31 @@
+@import "../global/Imports.css";
+
+.nav {
+    font-family: var(--font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 64px;
+    position: fixed;
+    top:0;
+    left: 0;
+    border-bottom: 1px solid #f7f7f7;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.nav__wrapper{
+    width:100%;
+    max-width:1080px;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.nav__wrapper img{
+    height:35px;
+    width:auto;
+}
