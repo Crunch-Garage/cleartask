@@ -47,13 +47,6 @@ class Signup extends React.Component {
                 .then(response => {
 
                     console.log(response);
-                    // Store authorization tokens in local storage so we can use them to fire
-                    // subsequent Api requests for the user.
-                    // access token gives us access to server requests
-                    localStorage.setItem("access_token", response.data.access_tokens.access);
-                    // we will use the refresh token to get a new access token from the server when the initial one nears expiry
-                    localStorage.setItem("refresh_token", response.data.access_tokens.refresh);
-
                     // redirect user to their dashboard
                     this.props.history.go("/workspace");
                 })
