@@ -34,28 +34,31 @@ class Signup extends React.Component {
 
     registerUser = (e) => {
         e.preventDefault();
-        this.setState({submitting:true})
-        this.state.email ? (
+        if (this.state.email) {
+            this.setState({ submitting: true, emailErrors: "" });
             axios({
-                method:'post',
-                url:'apis/create_account/claim_email/',
-                data: {
-                    email:this.state.email
-                }
+            method: "post",
+            url: "apis/create_account/claim_email/",
+            data: {
+                email: this.state.email
+            }
             })
             .then(response => {
-
                 console.log(response);
                 // redirect user to their dashboard
-                this.props.history.go("/workspace");
+                this.props.history.push("/workspace");
             })
-            .catch(error =>{
+            .catch(error => {
                 console.log(error);
             })
-        ) : this.setState({emailErrors:"Please enter your email"})
-        this.setState({submitting:false})
-    };
-
+            .finally(() => {
+                this.setState({ submitting: false });
+            });
+        } else {
+            this.setState({ emailErrors: "Please enter your email" });
+        }
+    }
+      
     render(){
         return(
             <div className='auth__block'>
