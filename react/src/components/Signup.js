@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "../services/axios";
 import Images from '../global/Images.js';
+import BouncingDots from './progress_bars/BouncingDots';
 import './Signup.css';
 import {Container, Grid} from '@mui/material';
 import { Link } from "react-router-dom";
@@ -20,6 +21,7 @@ class Signup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            submitting:false,
             email:"",
             authErrors:"",
             emailErrors:"",
@@ -32,11 +34,12 @@ class Signup extends React.Component {
 
     registerUser = (e) => {
         e.preventDefault();
+        this.setState({submitting:true})
         this.state.email ? (
             this.state.email ? (
                 axios({
                     method:'post',
-                    url:'/apis/rest-auth/registration/',
+                    url:'apis/create_account/claim_email/',
                     data: {
                         email:this.state.email
                     }
@@ -60,6 +63,7 @@ class Signup extends React.Component {
 
             ) : this.setState({emailErrors:"Please enter your email"})
         ) : this.setState({emailErrors:"Please enter your email"})
+        this.setState({submitting:false})
     };
 
     render(){
@@ -85,7 +89,19 @@ class Signup extends React.Component {
                                             <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
                                             <span className='form__errors'>{this.state.emailErrors}</span>
                                         </div>
-                                        <button type='submit'>Sign up</button>
+                                        
+                                        <button type='submit'>
+                                            {
+                                                !this.state.submitting ?(
+                                                <div className="cta__button--text">
+                                                    Continue
+                                                </div>
+                                                ): (
+                                                <BouncingDots/>
+                                                )
+                                            }
+                                            
+                                        </button>
                                     </form>
                                     <div className='auth__wrapper-social'>
                                         <div className='auth__wrapper-social--split'>
