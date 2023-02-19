@@ -32,7 +32,7 @@ class Signup extends React.Component {
 
     registerUser = (e) => {
         e.preventDefault();
-        this.state.email && this.state.firstname? (
+        this.state.email ? (
             this.state.email ? (
                 axios({
                     method:'post',
