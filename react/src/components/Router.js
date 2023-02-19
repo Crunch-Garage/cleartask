@@ -19,6 +19,7 @@ import Projects from './dashboard/Projects';
 import Settings from './dashboard/Settings';
 import Tasks from './dashboard/Tasks';
 import Home from './Home';
+import EmailSent from "./EmailSent";
 
 
 const WithoutNav = ()=>{
@@ -53,6 +54,8 @@ export default function AppRouter(){
                         <Route path="/dashboard/settings" element={<Settings/>}/>
                         <Route path="/dashboard/tasks" element={<Tasks/>}/>
                     </Route>
+                    {/* registration successful page*/}
+                    <Route path='/thankyou' element={<EmailSent/>}/>
                     {/* any other route not defined redirect to 404 page */}
                     <Route path='*' element={<PageNotFound/>}/>
                 </Route>
