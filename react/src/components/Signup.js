@@ -21,7 +21,6 @@ class Signup extends React.Component {
         super(props);
         this.state = {
             email:"",
-            password:"",
             authErrors:"",
             emailErrors:"",
             passwordErrors:""
@@ -39,7 +38,6 @@ class Signup extends React.Component {
                     method:'post',
                     url:'/apis/rest-auth/registration/',
                     data: {
-                        password:this.state.password,
                         email:this.state.email
                     }
                 })
@@ -86,16 +84,6 @@ class Signup extends React.Component {
                                             </div>
                                             <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
                                             <span className='form__errors'>{this.state.emailErrors}</span>
-                                        </div>
-                                        <div className='password'>
-                                            <div className='auth__form-input'>
-                                                <div className='auth__form-input--header'>
-                                                    <label for="password">Password</label>
-                                                </div>
-                                                <input id='password' type='password' className={this.state.passwordErrors ? 'form__field-error' : ''} name='password' placeholder='Enter your password' onChange={(e)=> this.handleChange({password:e.target.value})} required></input>
-                                                <span className='form__errors'>{this.state.passwordErrors}</span>
-                                            </div>
-                                           
                                         </div>
                                         <button type='submit'>Sign up</button>
                                     </form>
