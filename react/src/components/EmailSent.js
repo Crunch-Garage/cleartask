@@ -14,19 +14,19 @@ const ThankYou = ({email}) => {
                     Once you verify your email address, you and your team can get started in Cleartask.
                 </p>
                 <div className="email-sent__clients">
-                    <a href="https://gmail.com/">
+                    <a href="https://gmail.com/" target="_blank">
                         <div className="emailClients__wrapper">
                             <iconify-icon icon="logos:google-gmail"></iconify-icon>
                             Open Gmail
                         </div>
                     </a>
-                    <a href="https://outlook.live.com/">
+                    <a href="https://outlook.live.com/" target="_blank">
                         <div className="emailClients__wrapper">
                             <iconify-icon icon="vscode-icons:file-type-outlook"></iconify-icon>
                             Open Outlook
                         </div>
                     </a>
-                    <a href="https://mail.yahoo.com/">
+                    <a href="https://mail.yahoo.com/" target="_blank">
                         <div className="emailClients__wrapper">
                             <iconify-icon icon="logos:yahoo"></iconify-icon>
                             Open Yahoo
