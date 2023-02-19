@@ -86,7 +86,7 @@ class Signup extends React.Component {
                                             <div className='auth__form-input--header'>
                                                 <label for="email">Email</label>
                                             </div>
-                                            <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.handleChange({email:e.target.value})} required></input>
+                                            <input id='email' className={this.state.emailErrors ? 'form__field-error' : ''} name='email' placeholder='jane.doe@email.com' onChange={(e)=> this.setState({email:e.target.value})} required></input>
                                             <span className='form__errors'>{this.state.emailErrors}</span>
                                         </div>
                                         
