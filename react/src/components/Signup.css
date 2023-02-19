@@ -105,19 +105,6 @@
     font-size:0.8rem;
 }
 
-.auth form .full-name{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.auth form .full-name .fields {
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-}
-
 .auth form button{
     background-color: var(--primary-color);
     padding:10px 5px;

@@ -20,67 +20,48 @@ class Signup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            username:"",
-            fullName:"",
             email:"",
             password:"",
             authErrors:"",
             emailErrors:"",
-            fullNameErrors:"",
             passwordErrors:""
         }
-
-        this.handleChange =this.handleChange.bind(this);
     }
 
     // componentDidMount = () =>{ 
     // }
 
-    // Form fields processing a user inputs their details.
-    handleChange(object){
-        // Update state as form field values change
-        this.setState(object,()=> {
-            // TO DO: Check if username already exists and generate a new random one 
-            this.setState({username:this.state.email.substring(0, this.state.email.lastIndexOf("@"))}, () => console.log(this.state.username))
-        });
-    };
-
     registerUser = (e) => {
         e.preventDefault();
         this.state.email && this.state.firstname? (
             this.state.email ? (
-                this.state.fullName ? (
-                    axios({
-                        method:'post',
-                        url:'/apis/rest-auth/registration/',
-                        data: {
-                            username: this.state.username,
-                            firstname:this.state.fullName,
-                            password:this.state.password,
-                            email:this.state.email
-                        }
-                    })
-                    .then(response => {
+                axios({
+                    method:'post',
+                    url:'/apis/rest-auth/registration/',
+                    data: {
+                        password:this.state.password,
+                        email:this.state.email
+                    }
+                })
+                .then(response => {
 
-                        console.log(response);
-                        // Store authorization tokens in local storage so we can use them to fire
-                        // subsequent Api requests for the user.
-                        // access token gives us access to server requests
-                        localStorage.setItem("access_token", response.data.access_tokens.access);
-                        // we will use the refresh token to get a new access token from the server when the initial one nears expiry
-                        localStorage.setItem("refresh_token", response.data.access_tokens.refresh);
+                    console.log(response);
+                    // Store authorization tokens in local storage so we can use them to fire
+                    // subsequent Api requests for the user.
+                    // access token gives us access to server requests
+                    localStorage.setItem("access_token", response.data.access_tokens.access);
+                    // we will use the refresh token to get a new access token from the server when the initial one nears expiry
+                    localStorage.setItem("refresh_token", response.data.access_tokens.refresh);
 
-                        // redirect user to their dashboard
-                        this.props.history.go("/workspace");
-                    })
-                    .catch(error =>{
-                        console.log(error);
-                    })
-
-                ) : this.setState({fullNameErrors:"Please enter your full name"})
+                    // redirect user to their dashboard
+                    this.props.history.go("/workspace");
+                })
+                .catch(error =>{
+                    console.log(error);
+                })
 
             ) : this.setState({emailErrors:"Please enter your email"})
-        ) : this.setState({emailErrors:"Please enter your email",fullNameErrors:"Please enter your full name"})
+        ) : this.setState({emailErrors:"Please enter your email"})
     };
 
     render(){
@@ -99,18 +80,6 @@ class Signup extends React.Component {
                                     </div>
                                     <form onSubmit={this.registerUser} className="form">
                                     <span className={this.state.authErrors ? 'form__errors form__auth-error' : ''}>{this.state.authErrors}</span>
-                                        <div className="full-names">
-                                            <div className="fields">
-                                                <div className='auth__form-input'>
-                                                    <div className='auth__form-input--header'>
-                                                        <label for="fullname">Full Name</label>
-                                                    </div>
-                                                    <input id='fullname' className={this.state.fullNameErrors ? 'form__field-error' : ''} name='full name' placeholder='Jane Doe' onChange={(e)=> this.handleChange({fullName:e.target.value})} required></input>
-                                                </div>
-                                            
-                                            </div>
-                                            <span className='form__errors'>{this.state.fullNameErrors}</span>
-                                        </div>
                                         <div className='auth__form-input'>
                                             <div className='auth__form-input--header'>
                                                 <label for="email">Email</label>
