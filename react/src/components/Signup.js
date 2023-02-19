@@ -36,25 +36,22 @@ class Signup extends React.Component {
         e.preventDefault();
         this.setState({submitting:true})
         this.state.email ? (
-            this.state.email ? (
-                axios({
-                    method:'post',
-                    url:'apis/create_account/claim_email/',
-                    data: {
-                        email:this.state.email
-                    }
-                })
-                .then(response => {
+            axios({
+                method:'post',
+                url:'apis/create_account/claim_email/',
+                data: {
+                    email:this.state.email
+                }
+            })
+            .then(response => {
 
-                    console.log(response);
-                    // redirect user to their dashboard
-                    this.props.history.go("/workspace");
-                })
-                .catch(error =>{
-                    console.log(error);
-                })
-
-            ) : this.setState({emailErrors:"Please enter your email"})
+                console.log(response);
+                // redirect user to their dashboard
+                this.props.history.go("/workspace");
+            })
+            .catch(error =>{
+                console.log(error);
+            })
         ) : this.setState({emailErrors:"Please enter your email"})
         this.setState({submitting:false})
     };
