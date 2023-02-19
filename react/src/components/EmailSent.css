@@ -1,0 +1,66 @@
+@import '../global/Imports.css';
+
+.email-sent{
+    margin-top: 150px;
+    font-family: var(--font-family);
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: calc(100vh - 177px - 150px);
+}
+
+.email-sent h4{
+    font-size: 3rem;
+    font-weight: 100;
+    line-height: 3rem;
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.email-sent p{
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.email-sent__clients{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.email-sent__clients a{
+    margin-bottom: 15px;
+}
+
+.email-sent__clients :not(:last-child){
+    margin-right: 15px;
+}
+
+.emailClients__wrapper{
+    border:2px solid #d1d1d1;
+    padding:10px 15px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emailClients__wrapper iconify-icon{
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width:600px){
+    .email-sent__clients a{
+        width: 100%;
+        margin-right: 0 !important;
+    }
+
+    .emailClients__wrapper{
+        width: 100%;
+        margin: 0;
+    }
+}
