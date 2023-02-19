@@ -45,8 +45,6 @@ class Signup extends React.Component {
             })
             .then(response => {
                 console.log(response);
-                // redirect user to their dashboard
-                this.props.history.push("/workspace");
             })
             .catch(error => {
                 console.log(error);
