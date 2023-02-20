@@ -80,7 +80,11 @@
     position: relative;
 }
 
-.hero__grid--first form button:hover{
+.hero__grid--first form button[disabled]{
+    background-color: var(--secondary-button-color);
+}
+
+.hero__grid--first form button[type="submit"]:hover{
     background-color: var(--secondary-button-color);
 }
 
