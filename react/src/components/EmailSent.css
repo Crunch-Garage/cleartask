@@ -53,6 +53,46 @@
     margin-right: 10px;
 }
 
+.resend-email p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.resend-email button{
+    max-width: 250px;
+    color:var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resend-email .email-sending .cta__button--spinners div{
+    background-color:var(--primary-color) !important;
+}
+
+.resend-email .email-sent,
+.resend-email .email-not-sent{
+    margin: 0;
+    height: fit-content;
+    height: -moz-fit-content;
+}
+
+.resend-email .email-sent{
+    color:green;
+}
+
+.resend-email .email-not-sent{
+    color:red;
+}
+
+.resend-email .email-sent iconify-icon,
+.resend-email .email-not-sent iconify-icon {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
 @media screen and (max-width:600px){
     .email-sent__clients a{
         width: 100%;
