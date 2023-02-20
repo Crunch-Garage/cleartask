@@ -89,18 +89,20 @@ const Signup = () => {
                                         <span className='form__errors'>{registerErrors.emailErrors}</span>
                                     </div>
                                     
-                                    <button type='submit'>
                                         {
                                             !submitting ?(
-                                            <div className="cta__button--text">
-                                                Continue
-                                            </div>
+                                            <button type='submit'>
+                                                <div className="cta__button--text">
+                                                    Continue
+                                                </div>
+                                            </button>
+                                            
                                             ): (
-                                            <BouncingDots/>
+                                            <button type='button' disabled>
+                                                 <BouncingDots/>
+                                            </button>
                                             )
                                         }
-                                        
-                                    </button>
                                 </form>
                                 <div className='auth__wrapper-social'>
                                     <div className='auth__wrapper-social--split'>
