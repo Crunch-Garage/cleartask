@@ -4,8 +4,8 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 
-site_name = Site.objects.get_current().name
-site_domain = Site.objects.get_current().domain
+site_name = Site.objects.get_current().name if Site.objects.get_current().name else "example.com"
+site_domain = Site.objects.get_current().domain if Site.objects.get_current().name else "example.com"
 # check valid email
 def email_is_valid(email):
     email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
