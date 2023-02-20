@@ -19,7 +19,7 @@ const SignUpNavbar = ()=>{
 }
 
 const Signup = () => {
-    const [submitting, setSubmitting] = React.useState(false);;
+    const [submitting, setSubmitting] = React.useState(false);
     const [registerInfo, setRegisterInfo] = React.useState({
         email:""
     });
@@ -49,7 +49,11 @@ const Signup = () => {
             .then(response => {
                 console.log(response);
                 // Take user to thank you page
-                navigate("/thankyou", {state:{email:registerInfo.email}})
+                navigate("/thankyou", {
+                    state:{
+                        email:registerInfo.email
+                    }
+                })
             })
             .catch(error => {
                 console.log(error);
