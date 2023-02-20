@@ -116,7 +116,11 @@
     font-weight: 600;
 }
 
-.auth form button:hover{
+.auth form button[disabled]{
+    background-color: var(--secondary-button-color);
+}
+
+.auth form button[type='submit']:hover{
     background-color: var(--secondary-button-color);
 }
 

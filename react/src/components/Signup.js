@@ -19,7 +19,7 @@ const SignUpNavbar = ()=>{
 }
 
 const Signup = () => {
-    const [submitting, setSubmitting] = React.useState(false);;
+    const [submitting, setSubmitting] = React.useState(false);
     const [registerInfo, setRegisterInfo] = React.useState({
         email:""
     });
@@ -49,7 +49,11 @@ const Signup = () => {
             .then(response => {
                 console.log(response);
                 // Take user to thank you page
-                navigate("/thankyou", {state:{email:registerInfo.email}})
+                navigate("/thankyou", {
+                    state:{
+                        email:registerInfo.email
+                    }
+                })
             })
             .catch(error => {
                 console.log(error);
@@ -85,18 +89,20 @@ const Signup = () => {
                                         <span className='form__errors'>{registerErrors.emailErrors}</span>
                                     </div>
                                     
-                                    <button type='submit'>
                                         {
                                             !submitting ?(
-                                            <div className="cta__button--text">
-                                                Continue
-                                            </div>
+                                            <button type='submit'>
+                                                <div className="cta__button--text">
+                                                    Continue
+                                                </div>
+                                            </button>
+                                            
                                             ): (
-                                            <BouncingDots/>
+                                            <button type='button' disabled>
+                                                 <BouncingDots/>
+                                            </button>
                                             )
                                         }
-                                        
-                                    </button>
                                 </form>
                                 <div className='auth__wrapper-social'>
                                     <div className='auth__wrapper-social--split'>
