@@ -2,7 +2,7 @@ import React from "react";
 import axios from "../services/axios";
 import Images from '../global/Images.js';
 import {Container, Grid} from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BouncingDots from "./progress_bars/BouncingDots";
 import "./Home.css";
 import Signup from "./Signup";
@@ -26,6 +26,8 @@ const GetStartedInput = ()=>{
     const [submitting, setSubmitting] = React.useState(false);
     const [showSignup, setShowSignup] = React.useState(false);
 
+    let navigate = useNavigate()
+
     const submitEmail = (email) => {
         setSubmitting(true);
         axios({
@@ -37,6 +39,12 @@ const GetStartedInput = ()=>{
         })
         .then(response => {
             setSubmitting(false);
+            // Take user to thank you page
+            navigate("/thankyou", {
+                state:{
+                    email:email
+                }
+            })
             
         })
         .catch(error =>{
