@@ -125,6 +125,10 @@ USE_TZ = True
 
 STATIC_URL = '/static_files/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, '../static_files'),
+)
+
 MEDIA_URL = '/media_files/'
 
 # use this settings when debug mode is turned off
