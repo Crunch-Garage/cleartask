@@ -61,18 +61,22 @@ const GetStartedInput = ()=>{
             <form onSubmit={handleSubmit} method="post">
                 <input id="email" type="email" placeholder="Enter your email"/>
                 <div className="cta">
-                    <button type="submit" className="cta__button">
+                    
                     {
                         !submitting ?(
-                        <div className="cta__button--text">
-                            Get started
-                        </div>
+                        <button type="submit" className="cta__button">
+                            <div className="cta__button--text">
+                                Get started
+                            </div>
+                        </button>
                         ): (
-                        <BouncingDots/>
+                        <button type="button" className="cta__button" disabled>
+                            <BouncingDots/>
+                        </button>
                         )
                     }
                         
-                    </button>
+                    
                     <span>Free forever!<br/> No credit card</span>
                 </div>
             </form>
