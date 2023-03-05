@@ -1,0 +1,83 @@
+@import "../global/Imports.css";
+
+.activate-account{
+    width:100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activate-account__wrapper{
+    width: 350px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.activate-account__wrapper p{
+    font-size: 0.8rem;
+    margin-top: 15px;
+}
+
+.activate-account__wrapper span{
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.activate-account__wrapper span .cta__button--spinners div{
+    background-color: var(--primary-color) ;
+}
+
+.activate-account__head img{
+    height:25px;
+}
+
+.activate-account__errors{
+    width:100%;
+    background-color: rgb(255 0 0 / 20%);
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.activate-account__body{
+    margin-top: 50px;
+}
+
+.activate-account__message{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.activate-account__message p{
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.activate-account__message.false p{
+    color:red;
+}
+
+.activate-account__message.false iconify-icon{
+    font-size: 18px;
+    color:red;
+}
+
+.activate-account__message.true p{
+    color:green;
+}
+
+.activate-account__message.true iconify-icon{
+    font-size: 18px;
+    color:green;
+}
+
+.activate-account__message iconify-icon{
+    margin-right: 5px;
+}
