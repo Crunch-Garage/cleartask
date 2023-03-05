@@ -6,11 +6,11 @@ import Images from '../global/Images.js';
 const ActivateAccount = ()=>{
 // Activate the user and redirects them to set password and personal info screen
     const [activating,setActivating] = React.useState(true)
-    const [sucess, setSuccess] =  React.useState({
+    const [success, setSuccess] =  React.useState({
         "state": null,
         "details":null
     })
-
+    
     return(
         <div className="activate-account">
             <div className="activate-account__wrapper">
@@ -28,8 +28,8 @@ const ActivateAccount = ()=>{
                 
                 {
                     setSuccess.state != null ? (
-                        <div className={`activate-account__message ${sucess.state}`}>
-                            <iconify-icon icon={`${sucess.state ?'carbon:checkmark-outline':"carbon:error" }`}></iconify-icon>
+                        <div className={`activate-account__message ${success.state}`}>
+                            <iconify-icon icon={`${success.state ?'carbon:checkmark-outline':"carbon:error" }`}></iconify-icon>
                             <p>Credentials not valid. Redirecting in </p>
                         </div>
                     ) : ''
