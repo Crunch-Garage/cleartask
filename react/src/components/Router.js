@@ -20,7 +20,7 @@ import Settings from './dashboard/Settings';
 import Tasks from './dashboard/Tasks';
 import Home from './Home';
 import EmailSent from "./EmailSent";
-
+import ActivateAccount from "./ActivateAccount";
 
 const WithoutNav = ()=>{
     return <Outlet/>
@@ -43,6 +43,7 @@ export default function AppRouter(){
                     <Route element={<UnauthedRoute/>}>
                         <Route path="/auth/signup" element={<Signup/>}/>
                         <Route path="/auth/login" element={<Login/>}/>
+                        <Route path="/auth/activate_account/" element={<ActivateAccount/>}/>
                     </Route>
                     {/* If authenticated */}
                     <Route element={<AuthedRoute />}>

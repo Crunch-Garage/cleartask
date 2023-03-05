@@ -16,7 +16,15 @@ def email_is_valid(email):
 
 def send_email(email, uid, token):
     # Create a url we will attach in the email
-    url = f"http://{site_domain}" + reverse( 'accounts-apis:activate_account', kwargs={'uid':uid, 'token':token})	
+    """
+        Since requests are passed by the react app via api calls we construct a url
+        that take the user to the react app as defined in the nginx.conf file.
+        The url will carry our uuid and token and the react app will handle things from there.
+        We comment the django based url and use the react url
+    """
+    # url = f"http://{site_domain}" + reverse( 'accounts-apis:activate_account', kwargs={'uid':uid, 'token':token})	
+    
+    url = f"http://{site_domain}/auth/activate_account/?uid={uid}&token={token}"
 
     # Other email stuff
     subject = "Verify your email" 
