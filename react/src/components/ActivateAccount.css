@@ -60,20 +60,20 @@
     font-size: 0.7rem;
 }
 
-.activate-account__message.false p{
+.activate-account__message.error p{
     color:red;
 }
 
-.activate-account__message.false iconify-icon{
+.activate-account__message.error iconify-icon{
     font-size: 18px;
     color:red;
 }
 
-.activate-account__message.true p{
+.activate-account__message.activated p{
     color:green;
 }
 
-.activate-account__message.true iconify-icon{
+.activate-account__message.activated iconify-icon{
     font-size: 18px;
     color:green;
 }
