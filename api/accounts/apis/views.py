@@ -118,10 +118,12 @@ def activate_account(request, uid, token):
         # Mark user as active so the can be able to login
         user.is_active = True
         user.save()
-        
+        token = utility.get_tokens_for_user(user)
         # TO DO: mark email address as verified
         content = {
-            "details": "Email verified successfully. You can now login to your account"
+            "details": "Email verified successfully. You can now login to your account",
+            "access":token["access"],
+            "refresh":token["refresh"]
         }
         return Response(content)
     else:
