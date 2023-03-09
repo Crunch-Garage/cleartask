@@ -1,0 +1,9 @@
+.auth__form-fullname{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.auth__form-fullname--first{
+    margin-right: 10px;
+}
