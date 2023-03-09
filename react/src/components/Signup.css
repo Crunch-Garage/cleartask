@@ -130,16 +130,14 @@
 
 .auth .form__errors{
     color:#f10000;
-    font-size: 11px;
+    font-size: 0.7rem;
     text-align: start;
 }
 
 .auth .form__errors.form__auth-error{
-    margin:10px 0;
-    border: 1px solid #f10000;
-    background: rgb(204 0 0 / 20%);
-    padding: 20px 10px;
+    margin-bottom:10px;
     border-radius: 3px;
+    width:100%;
 }
 
 .auth__signup{

@@ -21,6 +21,7 @@ import Tasks from './dashboard/Tasks';
 import Home from './Home';
 import EmailSent from "./EmailSent";
 import ActivateAccount from "./ActivateAccount";
+import AddAccountDetails from "./AddAccountDetails";
 
 const WithoutNav = ()=>{
     return <Outlet/>
@@ -47,6 +48,7 @@ export default function AppRouter(){
                     </Route>
                     {/* If authenticated */}
                     <Route element={<AuthedRoute />}>
+                        <Route path="/auth/add_account_details/" element={<AddAccountDetails/>}/>
                         <Route path="/dashboard/workspace" element={<Workspace/>}/>
                         <Route path="/dashboard/inbox" element={<Inbox/>}/>
                         <Route path="/dashboard/notifications" element={<Notifications/>}/>

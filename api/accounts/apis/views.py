@@ -1,5 +1,5 @@
 from . import serializers
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import (
@@ -118,14 +118,53 @@ def activate_account(request, uid, token):
         # Mark user as active so the can be able to login
         user.is_active = True
         user.save()
-        
+        token = utility.get_tokens_for_user(user)
         # TO DO: mark email address as verified
         content = {
-            "details": "Email verified successfully. You can now login to your account"
+            "details": "Email verified successfully. You can now login to your account",
+            "access":token["access"],
+            "refresh":token["refresh"]
         }
         return Response(content)
     else:
         content = {
             "details": "Invalid activation link."
+        }
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def finish_registration(request):
+    first_name = request.data.get("first_name", None)
+    last_name = request.data.get("last_name", None)
+    password1 = request.data.get("password1", None)
+    password2 = request.data.get("password2", None)
+    
+    if first_name and last_name and password1 and password2:
+        if password1 == password2:
+            user = User.objects.get(pk=request.user.pk)
+            user.first_name = first_name
+            user.last_name = last_name
+            user.set_password(password1)
+            user.save()
+
+            content = {
+                "message": "Details updated successfully"
+            }
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            content = {
+                "password1":"Password does not match",
+                "password2":"Password does not match",
+                "message": "Password1 and Password2 do not match"
+            }
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        content = {
+            "first_name":"This field is required",
+            "last_name": "This field is required",
+            "password1": "This field is required",
+            "password2": "This field is required",
+            "message": "One or all of the above fields are missing"
         }
         return Response(content, status=status.HTTP_400_BAD_REQUEST)

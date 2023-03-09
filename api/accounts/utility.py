@@ -3,6 +3,7 @@ from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
+from rest_framework_simplejwt.tokens import RefreshToken
 
 site_name = Site.objects.get_current().name if Site.objects.get_current().name else "example.com"
 site_domain = Site.objects.get_current().domain if Site.objects.get_current().name else "example.com"
@@ -47,3 +48,11 @@ def send_email(email, uid, token):
     except Exception as e:
         print(e)
         return False
+
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
