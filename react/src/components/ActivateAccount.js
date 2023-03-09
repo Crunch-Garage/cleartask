@@ -30,8 +30,10 @@ const ActivateAccount = ()=>{
                 setMessage({"state":"activated", "details":response.data.details})
                 // For now lets redirect users to the login page.
                 //  TO DO: Redirect users to page where they can setup their password and personal info
+                window.localStorage.setItem("access_token",response.data.access)
+                window.localStorage.setItem("refresh_token",response.data.refresh)
                 setTimeout(() => {
-                    navigate("/auth/login", {replace:true})
+                    navigate("/auth/add_account_details/", {replace:true})
                 }, 5000);
             })
             .catch(error => {
