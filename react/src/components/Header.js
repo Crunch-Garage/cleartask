@@ -223,6 +223,164 @@ const SecondaryMenu = ()=> {
     )
 }
 
+const MobileMenu = ()=>{
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+    const [subNav, setSubNav] = React.useState({
+        subNav1:"hide"
+    })
+    const[subNavOpen, setSubNavOpen] = React.useState(false)
+    
+    const toggleSubNav = ()=>{
+        setSubNav({subNav1:"visible"})
+        setSubNavOpen(true)
+    }
+
+    const closeSubnav = ()=>{
+        setSubNav({subNav1:"hide"})
+        setSubNavOpen(false)
+    }
+
+    return(
+        <>
+            <div className="mobile-menu__trigger">
+                {/* <!-- Mobile menu button--> */}
+                <button type="button" className="mobile-menu__trigger-button" onClick={() => setMobileMenuOpen(true)} aria-controls="mobile-menu" aria-expanded="false">
+                    <iconify-icon icon="iconoir:menu"/>
+                </button>
+            </div>
+            
+            {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+            <div id="mobile-menu" className={`mobile-menu-wrap ${mobileMenuOpen}`}>
+                <div className="mobile-menu-wrap__inner">
+                    <div className={`mobile-menu-wrap__inner--top ${subNavOpen}`}>
+                        <div className="mobile-menu__logo">
+                            <Link to="/">
+                                <img src={Images.logo} alt="cleartask"/>
+                            </Link>
+                        </div>
+                        <button type="button" className="sub-nav__close" onClick={closeSubnav}>
+                                <iconify-icon icon="carbon:chevron-left"/>
+                                <span>Back</span>
+                        </button>
+                        <button type="button" className="mobile-menu__close-button" onClick={() => setMobileMenuOpen(false)} aria-controls="mobile-menu" aria-expanded="false">
+                            <iconify-icon icon="carbon:close"/>
+                        </button>
+                    </div>
+                    <div className={`mobile-menu-wrap__inner--middle ${subNavOpen}`}>
+                        <div className="mobile-menu-wrap__nav">
+                            <ul>
+                                <li onClick={toggleSubNav}>
+                                    <p>Features</p>
+                                    <iconify-icon icon="carbon:chevron-right"/>
+                                </li>
+                                <li>
+                                    <p>Plans</p>
+                                    <iconify-icon icon="carbon:chevron-right"/>
+                                </li>
+                                <li>
+                                    <p>Pricing</p>
+                                    <iconify-icon icon="carbon:chevron-right"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className={`mobile-menu-wrap__sub-nav ${subNav.subNav1}`}>
+                            <div className="mobile-menu-wrap__sub-nav-links">
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:collaborate" style={{"font-size": "24px", "color":"#E300A4"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Teams</span>
+                                            <p className="body">Bring your team over and collaborate faster on projects.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">                                               
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:checkbox-checked"  style={{"font-size": "24px", "color":"#8EECFC"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Tasks</span>
+                                            <p className="body">Create and manage tasks for a project easily.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:document"  style={{"font-size": "24px", "color":"#8FFF93"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Docs</span>
+                                            <p className="body">Document your projects, keep notes.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:video"  style={{"font-size": "24px", "color":"#FBBC05"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Meetings</span>
+                                            <p className="body">Schedule and host virtual conference calls.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:calendar"  style={{"font-size": "24px", "color":"#1EA7FF"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Calendar</span>
+                                            <p className="body">Use a robust Calendar to track all your work, tasks and due dates.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:notification"  style={{"font-size": "24px", "color":"#2400FF"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Notifications</span>
+                                            <p className="body">Never miss any activity. Get notifications on your account.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:hashtag"  style={{"font-size": "24px", "color":"#299702"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Chat</span>
+                                            <p className="body">Use chat to send quick messages to your teammates.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                                <NavLink to="/">
+                                    <div className="mobile-menu-wrap__link-item">
+                                        <div className="mobile-menu-wrap__link-item--icon">
+                                            <iconify-icon icon="carbon:directory-domain"  style={{"font-size": "24px", "color":"#FF0000"}}/>
+                                        </div>
+                                        <div className="mobile-menu-wrap__link-item--text">
+                                            <span className="head">Boards</span>
+                                            <p className="body">Be Agile and stay focused using Kanban boards.</p>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+       </>
+    )
+}
 function Header(){
     
     return(
@@ -230,35 +388,14 @@ function Header(){
             <nav className="navbar">
                 <Container className="navbar__full-menu">
                     <div className="navbar__nav-menu-items">
-                        <div className="mobile-menu__trigger mobile-menu-trigger" style={{'display':"none"}}>
-                            {/* <!-- Mobile menu button--> */}
-                            <button type="button" className="mobile-menu__trigger-button" aria-controls="mobile-menu" aria-expanded="false">
-                                <span>Open main menu</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
                         <MainMenu/>
-                        <SecondaryMenu/>
+                        <div className="navbar__nav-menu-items--right">
+                            <SecondaryMenu/>
+                            <MobileMenu/>
+                        </div>
+                        
                     </div>
                 </Container>
-
-                {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-                <div id="mobile-menu" style={{display:"none"}}>
-                    <div className="space-y-1 px-2 pt-2 pb-3">
-                    <a href="#" aria-current="page">Dashboard</a>
-
-                    <a href="#">Team</a>
-
-                    <a href="#">Projects</a>
-
-                    <a href="#">Calendar</a>
-                    </div>
-                </div>
             </nav>
         </>
 
