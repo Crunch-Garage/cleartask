@@ -375,7 +375,39 @@ const MobileMenu = ()=>{
                                 </NavLink>
                             </div>
                         </div>
-                    </div>  
+                    </div> 
+                    <div className="mobile-menu-wrap__inner--footer">
+                        {
+                            isExpired ? (
+                                <div className="mnav-footer__item--unauthed">
+                                    <NavLink to="/auth/signup">
+                                        <button type="button">Get started  <iconify-icon icon="carbon:chevron-right"/></button>
+                                    </NavLink>
+                                </div>
+                            ) : (
+                                <div className="mnav-footer__item--authed">
+                                    <button type="button">
+                                        <iconify-icon icon="carbon:notification"/>
+                                    </button>
+                                    <button type="button">
+                                        {
+                                        userData.profile_photo != "" ? (
+                                            <div className="authed__wrapper">
+                                                <span>KM</span>
+                                            </div>
+                                        ) : (
+                                            <div className="authed__wrapper">
+                                                <img src="https://images.unsplash.com/photo-1521856729154-7118f7181af9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="photo"/>
+                                            </div>
+                                        )
+                                        }
+                                    </button>
+                                </div> 
+                            )
+                        }
+                       
+                    </div>
+                   
                 </div>
             </div>
        </>
