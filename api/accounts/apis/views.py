@@ -42,10 +42,10 @@ def create_user_no_password(email):
             # We create a user with the email that will receive the verification link
             # We also mark the user inactive to prevent login until email is confirmed
             user = User.objects.create(username=username, email=email, is_active=False)
-            return user
+            return user.pk
         else:
             # Just send a new verification link 
-            return user
+            return user.first().pk
     except Exception as e:
         # If we encounter an error stop the verification process
         return False
@@ -61,8 +61,8 @@ def get_started_with_email(request):
         email_is_valid = utility.email_is_valid(email)
         if email_is_valid:
             # get the user
-            user = create_user_no_password(email)
-            user = User.objects.get(pk=user.first().pk)
+            user_pk = create_user_no_password(email)
+            user = User.objects.get(pk=user_pk)
             # generate a uid and token
             uid=''
             token=''
